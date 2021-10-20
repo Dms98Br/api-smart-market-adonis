@@ -19,13 +19,17 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import Database from '@ioc:Adonis/Lucid/Database'
+
+//#region  User
 Route.get('/user','UsersController.ListarUser')
 Route.post('/user/registrar','UsersController.CreateUser')
 Route.put('/user/update','UsersController.UpdateUser')
 Route.delete('/user/delete','UsersController.DeleteUser')
-Route.get('/', async () => {
-  
-  return Database.connection('mysql').from('users').select('*');
-  // return { hello: 'world' }
-})
+//#endregion
+
+//#region Lista de compras
+Route.post('/list/create','ListsController.CreateList')
+Route.get('/list','ListsController.ListsList')
+Route.put('/list/update','ListsController.ListsUpdate')
+Route.delete('/list/delete','ListsController.ListsDel')
+//#endregion
